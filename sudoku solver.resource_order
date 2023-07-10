@@ -1,0 +1,8 @@
+{
+  "FolderOrderSettings": [],
+  "ResourceOrderSettings": [
+    {"name":"obj_Controller","order":16,"path":"objects/obj_Controller/obj_Controller.yy",},
+    {"name":"obj_Cell","order":18,"path":"objects/obj_Cell/obj_Cell.yy",},
+    {"name":"room_main","order":15,"path":"rooms/room_main/room_main.yy",},
+  ],
+}
