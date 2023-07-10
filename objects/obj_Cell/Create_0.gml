@@ -87,7 +87,7 @@ check_for_all_others_impossible = function(_i){
 	var _multipleOptionsIn_metasquare = false;
 	with(obj_Cell) if(id != other.id){
 		if(floor(tileX/3) == floor(other.tileX/3) && floor(tileY/3) == floor(other.tileY/3)){
-			if(finalState == _i) show_message("it broke");
+			if(finalState == _i) show_message("invalid board");
 			if(possibleStates[_i] == true){
 				_multipleOptionsIn_metasquare = true;
 				break;
@@ -101,7 +101,7 @@ check_for_all_others_impossible = function(_i){
 	var _multipleOptionsIn_row = false;
 	with(obj_Cell) if(id != other.id){
 		if(tileY == other.tileY){
-			if(finalState == _i) show_message("it broke");
+			if(finalState == _i) show_message("invalid board");
 			if(possibleStates[_i] == true){
 				_multipleOptionsIn_row = true;
 				break;
@@ -115,7 +115,7 @@ check_for_all_others_impossible = function(_i){
 	var _multipleOptionsIn_column = false;
 	with(obj_Cell) if(id != other.id){
 		if(tileX == other.tileX){
-			if(finalState == _i) show_message("it broke");
+			if(finalState == _i) show_message("invalid board");
 			if(possibleStates[_i] == true){
 				_multipleOptionsIn_column = true;
 				break;
@@ -125,5 +125,39 @@ check_for_all_others_impossible = function(_i){
 	
 	if(!_multipleOptionsIn_column) return set_final(_i);
 	
-//// "Naked Double" checks
+//// Above code will set final if it is the only possibility
+//// Following code will reduce possibilities
+
+//// "Naked Double" checks. Does not set final, only removes possibilities
+	// only option in column
+/*
+	var _originCellState = json_stringify(possibleStates);
+	var _originCellA = self.id;
+	var _row = array_create(9);
+	with(obj_Cell) if(finalState == -1 && tileX == other.tileX){
+		_row[tileY] = self.id;	
+	}
+
+			
+			if(possibleStates[_i] == true){
+				var _cellState = json_stringify(possibleStates);
+				if(_originCellState == _cellState){
+					var _originCellB = self.id;
+					
+					with(obj_Cell) if(id != _originCellA){
+						if(tileX == other.tileX){
+							
+						}
+					}
+					break;
+				}
+				
+				_multipleOptionsIn_column = true;
+				
+			}
+		}
+	}
+	
+	if(!_multipleOptionsIn_column) return remove_state(_i);
+	*/
 }
